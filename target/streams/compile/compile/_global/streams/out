@@ -1,0 +1,7 @@
+[0m[[0m[31merror[0m] [0m[0m/Users/takapi327/projects/play-handson/app/controllers/tweet/TweetController.scala:14:21: not found: type Tweet[0m
+[0m[[0m[31merror[0m] [0m[0m    val tweets: Seq[Tweet] = (1L to 10L).map(i => Tweet(Some(i), s"test tweet${i.toString}"))[0m
+[0m[[0m[31merror[0m] [0m[0m                    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/takapi327/projects/play-handson/app/controllers/tweet/TweetController.scala:14:51: not found: value Tweet[0m
+[0m[[0m[31merror[0m] [0m[0m    val tweets: Seq[Tweet] = (1L to 10L).map(i => Tweet(Some(i), s"test tweet${i.toString}"))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                  ^[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
