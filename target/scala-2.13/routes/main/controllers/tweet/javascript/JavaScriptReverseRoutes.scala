@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/takapi327/projects/play-handson/conf/routes
-// @DATE:Thu Apr 23 23:54:06 JST 2020
+// @DATE:Sun Apr 26 10:38:12 JST 2020
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -24,6 +24,16 @@ package controllers.tweet.javascript {
       """
         function() {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "tweet/list"})
+        }
+      """
+    )
+  
+    // @LINE:10
+    def show: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.tweet.TweetController.show",
+      """
+        function(id0) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "tweet/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Long]].javascriptUnbind + """)("id", id0))})
         }
       """
     )
