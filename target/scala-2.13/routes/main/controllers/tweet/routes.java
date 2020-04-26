@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/takapi327/projects/play-handson/conf/routes
-// @DATE:Sun Apr 26 12:34:04 JST 2020
+// @DATE:Sun Apr 26 12:40:03 JST 2020
 
 package controllers.tweet;
 

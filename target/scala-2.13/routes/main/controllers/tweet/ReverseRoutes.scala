@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/takapi327/projects/play-handson/conf/routes
-// @DATE:Sun Apr 26 12:34:04 JST 2020
+// @DATE:Sun Apr 26 12:40:03 JST 2020
 
 import play.api.mvc.Call
 
@@ -16,6 +16,12 @@ package controllers.tweet {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
+  
+    // @LINE:15
+    def delete(): Call = {
+      
+      Call("POST", _prefix + { _defaultPrefix } + "tweet/delete")
+    }
   
     // @LINE:10
     def show(id:Long): Call = {

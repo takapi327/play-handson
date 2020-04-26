@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/takapi327/projects/play-handson/conf/routes
-// @DATE:Sun Apr 26 12:34:04 JST 2020
+// @DATE:Sun Apr 26 12:40:03 JST 2020
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -30,7 +30,7 @@ package controllers.javascript {
   
   }
 
-  // @LINE:17
+  // @LINE:18
   class ReverseAssets(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -38,7 +38,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:17
+    // @LINE:18
     def versioned: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.Assets.versioned",
       """

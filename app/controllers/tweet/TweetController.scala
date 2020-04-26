@@ -84,4 +84,18 @@ class TweetController @Inject()(
       }
       )
   }
+
+  def delete() = Action { implicit request: Request[AnyContent] =>
+  // requestから直接値を取得するサンプル
+    val idOpt = request.body.asFormUrlEncoded.get("id").headOption
+  // idがあり、値もあるときに削除
+    tweets.find(_.id.map(_.toString) == idOpt) match {
+      case Some(tweet) =>
+        tweets -= tweet
+      // 削除が完了したら一覧ページへリダイレクト
+        Redirect(routes.TweetController.list())
+      case None        =>
+        NotFound(views.html.error.page404())
+    }
+  }
 }

@@ -16,10 +16,10 @@ import play.api.mvc._
 import play.api.data._
 /*1.2*/import models.Tweet
 
-object list extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template1[Seq[Tweet],play.twirl.api.HtmlFormat.Appendable] {
+object list extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template3[Seq[Tweet],MessagesProvider,RequestHeader,play.twirl.api.HtmlFormat.Appendable] {
 
   /**/
-  def apply/*3.2*/(tweets: Seq[Tweet]):play.twirl.api.HtmlFormat.Appendable = {
+  def apply/*3.2*/(tweets: Seq[Tweet])(implicit messagesProvider: MessagesProvider, requestHeader: RequestHeader):play.twirl.api.HtmlFormat.Appendable = {
     _display_ {
       {
 
@@ -29,27 +29,34 @@ Seq[Any](format.raw/*4.1*/("""
   """),format.raw/*6.3*/("""<h1>一覧画面です</h1>
   <ul>
     """),_display_(/*8.6*/for(tweet <- tweets) yield /*8.26*/{_display_(Seq[Any](format.raw/*8.27*/("""
-      """),format.raw/*9.7*/("""<li>
-        <a href=""""),_display_(/*10.19*/controllers/*10.30*/.tweet.routes.TweetController.show(tweet.id.getOrElse(0))),format.raw/*10.87*/("""">
-          """),_display_(/*11.12*/tweet/*11.17*/.content),format.raw/*11.25*/("""
-        """),format.raw/*12.9*/("""</a>
+      """),_display_(/*9.8*/helper/*9.14*/.form(action = controllers.tweet.routes.TweetController.delete())/*9.79*/ {_display_(Seq[Any](format.raw/*9.81*/("""
+        """),_display_(/*10.10*/helper/*10.16*/.CSRF.formField),format.raw/*10.31*/("""
+        """),format.raw/*11.9*/("""<input type="hidden" value=""""),_display_(/*11.38*/tweet/*11.43*/.id),format.raw/*11.46*/("""" name="id">
+        <li>
+          <a href=""""),_display_(/*13.21*/controllers/*13.32*/.tweet.routes.TweetController.show(tweet.id.getOrElse(0))),format.raw/*13.89*/("""">
+            """),_display_(/*14.14*/tweet/*14.19*/.content),format.raw/*14.27*/("""
+          """),format.raw/*15.11*/("""</a>
+        </li>
+        <li>
+        <a href=""""),_display_(/*18.19*/controllers/*18.30*/.tweet.routes.TweetController.edit(tweet.id.getOrElse(0))),format.raw/*18.87*/("""">
+          <button type="button">編集</button>
+        </a>
       </li>
       <li>
-      <a href=""""),_display_(/*15.17*/controllers/*15.28*/.tweet.routes.TweetController.edit(tweet.id.getOrElse(0))),format.raw/*15.85*/("""">
-        <button type="button">編集</button>
-      </a>
-    </li>
-    """)))}),format.raw/*19.6*/("""
-  """),format.raw/*20.3*/("""</ul>
-""")))}),format.raw/*21.2*/("""
+        <input type="submit" value="削除">
+      </li>
+      """)))}),format.raw/*25.8*/("""
+    """)))}),format.raw/*26.6*/("""
+  """),format.raw/*27.3*/("""</ul>
+""")))}),format.raw/*28.2*/("""
 """))
       }
     }
   }
 
-  def render(tweets:Seq[Tweet]): play.twirl.api.HtmlFormat.Appendable = apply(tweets)
+  def render(tweets:Seq[Tweet],messagesProvider:MessagesProvider,requestHeader:RequestHeader): play.twirl.api.HtmlFormat.Appendable = apply(tweets)(messagesProvider,requestHeader)
 
-  def f:((Seq[Tweet]) => play.twirl.api.HtmlFormat.Appendable) = (tweets) => apply(tweets)
+  def f:((Seq[Tweet]) => (MessagesProvider,RequestHeader) => play.twirl.api.HtmlFormat.Appendable) = (tweets) => (messagesProvider,requestHeader) => apply(tweets)(messagesProvider,requestHeader)
 
   def ref: this.type = this
 
@@ -58,11 +65,11 @@ Seq[Any](format.raw/*4.1*/("""
 
               /*
                   -- GENERATED --
-                  DATE: 2020-04-26T12:34:04.980291
+                  DATE: 2020-04-26T12:43:12.808030
                   SOURCE: /Users/takapi327/projects/play-handson/app/views/tweet/list.scala.html
-                  HASH: e9698efa99fdf1abc2a0ed4a7eab5ae71854c0e8
-                  MATRIX: 438->1|765->23|879->44|906->46|928->60|967->62|996->65|1049->93|1084->113|1122->114|1155->121|1205->144|1225->155|1303->212|1344->226|1358->231|1387->239|1423->248|1494->292|1514->303|1592->360|1693->431|1723->434|1760->441
-                  LINES: 17->1|22->3|27->4|28->5|28->5|28->5|29->6|31->8|31->8|31->8|32->9|33->10|33->10|33->10|34->11|34->11|34->11|35->12|38->15|38->15|38->15|42->19|43->20|44->21
+                  HASH: 216936bb1440a094e1c991c6c91192ed0d485c1f
+                  MATRIX: 438->1|796->23|985->119|1012->121|1034->135|1073->137|1102->140|1155->168|1190->188|1228->189|1261->197|1275->203|1348->268|1387->270|1424->280|1439->286|1475->301|1511->310|1567->339|1581->344|1605->347|1678->393|1698->404|1776->461|1819->477|1833->482|1862->490|1901->501|1978->551|1998->562|2076->619|2249->762|2285->768|2315->771|2352->778
+                  LINES: 17->1|22->3|27->4|28->5|28->5|28->5|29->6|31->8|31->8|31->8|32->9|32->9|32->9|32->9|33->10|33->10|33->10|34->11|34->11|34->11|34->11|36->13|36->13|36->13|37->14|37->14|37->14|38->15|41->18|41->18|41->18|48->25|49->26|50->27|51->28
                   -- GENERATED --
               */
           
