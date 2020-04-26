@@ -1,4 +1,4 @@
-[0m[[0m[31merror[0m] [0m[0m/Users/takapi327/projects/play-handson/app/controllers/tweet/TweetController.scala:20:7: not found: value tweet[0m
-[0m[[0m[31merror[0m] [0m[0m      tweet.find(_.id.get == id).get[0m
-[0m[[0m[31merror[0m] [0m[0m      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/takapi327/projects/play-handson/app/views/tweet/store.scala.html:6:66: value store is not a member of controllers.tweet.ReverseTweetController[0m
+[0m[[0m[31merror[0m] [0m[0m  @helper.form(action = controllers.tweet.routes.TweetController.store()) {[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                 ^[0m
 [0m[[0m[31merror[0m] [0m[0mone error found[0m

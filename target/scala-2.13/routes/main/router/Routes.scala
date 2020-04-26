@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/takapi327/projects/play-handson/conf/routes
-// @DATE:Sun Apr 26 10:38:12 JST 2020
+// @DATE:Sun Apr 26 11:44:41 JST 2020
 
 package router
 
@@ -17,7 +17,7 @@ class Routes(
   HomeController_2: controllers.HomeController,
   // @LINE:9
   TweetController_0: controllers.tweet.TweetController,
-  // @LINE:13
+  // @LINE:15
   Assets_1: controllers.Assets,
   val prefix: String
 ) extends GeneratedRouter {
@@ -28,7 +28,7 @@ class Routes(
     HomeController_2: controllers.HomeController,
     // @LINE:9
     TweetController_0: controllers.tweet.TweetController,
-    // @LINE:13
+    // @LINE:15
     Assets_1: controllers.Assets
   ) = this(errorHandler, HomeController_2, TweetController_0, Assets_1, "/")
 
@@ -45,7 +45,9 @@ class Routes(
   def documentation = List(
     ("""GET""", this.prefix, """controllers.HomeController.index"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """tweet/list""", """controllers.tweet.TweetController.list"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """tweet/""" + "$" + """id<[^/]+>""", """controllers.tweet.TweetController.show(id:Long)"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """tweet/""" + "$" + """id<[0-9]+>""", """controllers.tweet.TweetController.show(id:Long)"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """tweet/store""", """controllers.tweet.TweetController.register"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """tweet/store""", """controllers.tweet.TweetController.store"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
@@ -92,7 +94,7 @@ class Routes(
 
   // @LINE:10
   private[this] lazy val controllers_tweet_TweetController_show2_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("tweet/"), DynamicPart("id", """[^/]+""",true)))
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("tweet/"), DynamicPart("id", """[0-9]+""",false)))
   )
   private[this] lazy val controllers_tweet_TweetController_show2_invoker = createInvoker(
     TweetController_0.show(fakeValue[Long]),
@@ -102,17 +104,53 @@ class Routes(
       "show",
       Seq(classOf[Long]),
       "GET",
-      this.prefix + """tweet/""" + "$" + """id<[^/]+>""",
+      this.prefix + """tweet/""" + "$" + """id<[0-9]+>""",
       """""",
       Seq()
     )
   )
 
-  // @LINE:13
-  private[this] lazy val controllers_Assets_versioned3_route = Route("GET",
+  // @LINE:11
+  private[this] lazy val controllers_tweet_TweetController_register3_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("tweet/store")))
+  )
+  private[this] lazy val controllers_tweet_TweetController_register3_invoker = createInvoker(
+    TweetController_0.register,
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.tweet.TweetController",
+      "register",
+      Nil,
+      "GET",
+      this.prefix + """tweet/store""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:12
+  private[this] lazy val controllers_tweet_TweetController_store4_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("tweet/store")))
+  )
+  private[this] lazy val controllers_tweet_TweetController_store4_invoker = createInvoker(
+    TweetController_0.store,
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.tweet.TweetController",
+      "store",
+      Nil,
+      "POST",
+      this.prefix + """tweet/store""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:15
+  private[this] lazy val controllers_Assets_versioned5_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("assets/"), DynamicPart("file", """.+""",false)))
   )
-  private[this] lazy val controllers_Assets_versioned3_invoker = createInvoker(
+  private[this] lazy val controllers_Assets_versioned5_invoker = createInvoker(
     Assets_1.versioned(fakeValue[String], fakeValue[Asset]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -147,10 +185,22 @@ class Routes(
         controllers_tweet_TweetController_show2_invoker.call(TweetController_0.show(id))
       }
   
-    // @LINE:13
-    case controllers_Assets_versioned3_route(params@_) =>
+    // @LINE:11
+    case controllers_tweet_TweetController_register3_route(params@_) =>
+      call { 
+        controllers_tweet_TweetController_register3_invoker.call(TweetController_0.register)
+      }
+  
+    // @LINE:12
+    case controllers_tweet_TweetController_store4_route(params@_) =>
+      call { 
+        controllers_tweet_TweetController_store4_invoker.call(TweetController_0.store)
+      }
+  
+    // @LINE:15
+    case controllers_Assets_versioned5_route(params@_) =>
       call(Param[String]("path", Right("/public")), params.fromPath[Asset]("file", None)) { (path, file) =>
-        controllers_Assets_versioned3_invoker.call(Assets_1.versioned(path, file))
+        controllers_Assets_versioned5_invoker.call(Assets_1.versioned(path, file))
       }
   }
 }

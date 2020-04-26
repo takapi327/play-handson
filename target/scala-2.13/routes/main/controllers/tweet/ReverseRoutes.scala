@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/takapi327/projects/play-handson/conf/routes
-// @DATE:Sun Apr 26 10:38:12 JST 2020
+// @DATE:Sun Apr 26 11:44:41 JST 2020
 
 import play.api.mvc.Call
 
@@ -23,10 +23,22 @@ package controllers.tweet {
       Call("GET", _prefix + { _defaultPrefix } + "tweet/list")
     }
   
+    // @LINE:12
+    def store(): Call = {
+      
+      Call("POST", _prefix + { _defaultPrefix } + "tweet/store")
+    }
+  
+    // @LINE:11
+    def register(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "tweet/store")
+    }
+  
     // @LINE:10
     def show(id:Long): Call = {
       
-      Call("GET", _prefix + { _defaultPrefix } + "tweet/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Long]].unbind("id", id)))
+      Call("GET", _prefix + { _defaultPrefix } + "tweet/" + implicitly[play.api.mvc.PathBindable[Long]].unbind("id", id))
     }
   
   }
