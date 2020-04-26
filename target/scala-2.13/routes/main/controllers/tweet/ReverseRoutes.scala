@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/takapi327/projects/play-handson/conf/routes
-// @DATE:Sun Apr 26 11:44:41 JST 2020
+// @DATE:Sun Apr 26 12:34:04 JST 2020
 
 import play.api.mvc.Call
 
@@ -17,10 +17,16 @@ package controllers.tweet {
     }
 
   
-    // @LINE:9
-    def list(): Call = {
+    // @LINE:10
+    def show(id:Long): Call = {
       
-      Call("GET", _prefix + { _defaultPrefix } + "tweet/list")
+      Call("GET", _prefix + { _defaultPrefix } + "tweet/" + implicitly[play.api.mvc.PathBindable[Long]].unbind("id", id))
+    }
+  
+    // @LINE:13
+    def edit(id:Long): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "tweet/" + implicitly[play.api.mvc.PathBindable[Long]].unbind("id", id) + "/edit")
     }
   
     // @LINE:12
@@ -29,16 +35,22 @@ package controllers.tweet {
       Call("POST", _prefix + { _defaultPrefix } + "tweet/store")
     }
   
+    // @LINE:14
+    def update(id:Long): Call = {
+      
+      Call("POST", _prefix + { _defaultPrefix } + "tweet/" + implicitly[play.api.mvc.PathBindable[Long]].unbind("id", id) + "/update")
+    }
+  
     // @LINE:11
     def register(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "tweet/store")
     }
   
-    // @LINE:10
-    def show(id:Long): Call = {
+    // @LINE:9
+    def list(): Call = {
       
-      Call("GET", _prefix + { _defaultPrefix } + "tweet/" + implicitly[play.api.mvc.PathBindable[Long]].unbind("id", id))
+      Call("GET", _prefix + { _defaultPrefix } + "tweet/list")
     }
   
   }

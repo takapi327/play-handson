@@ -1,3 +1,15 @@
+[0m[[0m[33mwarn[0m] [0m[0m/Users/takapi327/projects/play-handson/app/views/tweet/edit.scala.html:10:7: symbol literal is deprecated; use Symbol("rows") instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m      'rows -> 7, 'cols -> 40,[0m
+[0m[[0m[33mwarn[0m] [0m[0m      ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/Users/takapi327/projects/play-handson/app/views/tweet/edit.scala.html:10:19: symbol literal is deprecated; use Symbol("cols") instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m      'rows -> 7, 'cols -> 40,[0m
+[0m[[0m[33mwarn[0m] [0m[0m                  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/Users/takapi327/projects/play-handson/app/views/tweet/edit.scala.html:11:7: symbol literal is deprecated; use Symbol("_label") instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m      '_label -> "ツイート" ,'_showConstraints -> false[0m
+[0m[[0m[33mwarn[0m] [0m[0m      ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/Users/takapi327/projects/play-handson/app/views/tweet/edit.scala.html:11:26: symbol literal is deprecated; use Symbol("_showConstraints") instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m      '_label -> "ツイート" ,'_showConstraints -> false[0m
+[0m[[0m[33mwarn[0m] [0m[0m                         ^[0m
 [0m[[0m[33mwarn[0m] [0m[0m/Users/takapi327/projects/play-handson/app/views/tweet/store.scala.html:9:5: symbol literal is deprecated; use Symbol("row") instead[0m
 [0m[[0m[33mwarn[0m] [0m[0m    'row -> 7, 'cols -> 40,[0m
 [0m[[0m[33mwarn[0m] [0m[0m    ^[0m
@@ -10,4 +22,4 @@
 [0m[[0m[33mwarn[0m] [0m[0m/Users/takapi327/projects/play-handson/app/views/tweet/store.scala.html:10:23: symbol literal is deprecated; use Symbol("_showConstraints") instead[0m
 [0m[[0m[33mwarn[0m] [0m[0m    'label -> "ツイート", '_showConstraints -> false[0m
 [0m[[0m[33mwarn[0m] [0m[0m                      ^[0m
-[0m[[0m[33mwarn[0m] [0m[0mfour warnings found[0m
+[0m[[0m[33mwarn[0m] [0m[0m8 warnings found[0m

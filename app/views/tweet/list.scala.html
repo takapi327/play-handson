@@ -7,8 +7,15 @@
   <ul>
     @for(tweet <- tweets){
       <li>
-        <a href="@controllers.tweet.routes.TweetController.show(tweet.id.getOrElse(0))">@tweet.content</a>
+        <a href="@controllers.tweet.routes.TweetController.show(tweet.id.getOrElse(0))">
+          @tweet.content
+        </a>
       </li>
+      <li>
+      <a href="@controllers.tweet.routes.TweetController.edit(tweet.id.getOrElse(0))">
+        <button type="button">編集</button>
+      </a>
+    </li>
     }
   </ul>
 }
