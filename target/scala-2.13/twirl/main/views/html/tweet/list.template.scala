@@ -19,36 +19,57 @@ import play.api.data._
 object list extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template3[Seq[Tweet],MessagesProvider,RequestHeader,play.twirl.api.HtmlFormat.Appendable] {
 
   /**/
-  def apply/*3.2*/(tweets: Seq[Tweet])(implicit messagesProvider: MessagesProvider, requestHeader: RequestHeader):play.twirl.api.HtmlFormat.Appendable = {
+  def apply/*2.2*/(tweets: Seq[Tweet])(implicit messagesProvider: MessagesProvider, requestHeader: RequestHeader):play.twirl.api.HtmlFormat.Appendable = {
     _display_ {
       {
 
+def /*5.2*/css/*5.5*/:play.twirl.api.HtmlFormat.Appendable = {_display_(
 
-Seq[Any](format.raw/*4.1*/("""
-"""),_display_(/*5.2*/main("一覧画面です")/*5.16*/ {_display_(Seq[Any](format.raw/*5.18*/("""
-  """),format.raw/*6.3*/("""<h1>一覧画面です</h1>
-  <ul>
-    """),_display_(/*8.6*/for(tweet <- tweets) yield /*8.26*/{_display_(Seq[Any](format.raw/*8.27*/("""
-      """),_display_(/*9.8*/helper/*9.14*/.form(action = controllers.tweet.routes.TweetController.delete())/*9.79*/ {_display_(Seq[Any](format.raw/*9.81*/("""
-        """),_display_(/*10.10*/helper/*10.16*/.CSRF.formField),format.raw/*10.31*/("""
-        """),format.raw/*11.9*/("""<input type="hidden" value=""""),_display_(/*11.38*/tweet/*11.43*/.id),format.raw/*11.46*/("""" name="id">
-        <li>
-          <a href=""""),_display_(/*13.21*/controllers/*13.32*/.tweet.routes.TweetController.show(tweet.id.getOrElse(0))),format.raw/*13.89*/("""">
-            """),_display_(/*14.14*/tweet/*14.19*/.content),format.raw/*14.27*/("""
-          """),format.raw/*15.11*/("""</a>
-        </li>
-        <li>
-        <a href=""""),_display_(/*18.19*/controllers/*18.30*/.tweet.routes.TweetController.edit(tweet.id.getOrElse(0))),format.raw/*18.87*/("""">
-          <button type="button">編集</button>
-        </a>
-      </li>
-      <li>
-        <input type="submit" value="削除">
-      </li>
-      """)))}),format.raw/*25.8*/("""
-    """)))}),format.raw/*26.6*/("""
-  """),format.raw/*27.3*/("""</ul>
-""")))}),format.raw/*28.2*/("""
+Seq[Any](format.raw/*5.9*/("""
+  """),format.raw/*6.3*/("""<link rel="stylesheet" media="screen" href=""""),_display_(/*6.48*/routes/*6.54*/.Assets.versioned("stylesheets/list.css")),format.raw/*6.95*/("""">
+""")))};def /*10.2*/script/*10.8*/:play.twirl.api.HtmlFormat.Appendable = {_display_(
+
+Seq[Any](format.raw/*10.12*/("""
+  """),format.raw/*11.3*/("""<script src=""""),_display_(/*11.17*/routes/*11.23*/.Assets.versioned("javascripts/list.js")),format.raw/*11.63*/("""" type="text/javascript"></script>
+""")))};
+Seq[Any](format.raw/*3.1*/("""
+"""),format.raw/*4.23*/("""
+"""),format.raw/*7.2*/("""
+
+"""),format.raw/*9.22*/("""
+"""),format.raw/*12.2*/("""
+
+"""),format.raw/*14.27*/("""
+"""),_display_(/*15.2*/main(
+  title  = "一覧画面",
+  script = script,
+  css    = css,
+)/*19.2*/ {_display_(Seq[Any](format.raw/*19.4*/("""
+  """),format.raw/*20.30*/("""
+  """),format.raw/*21.3*/("""<h1>一覧画面です</h1>
+    """),_display_(/*22.6*/for(tweet <- tweets) yield /*22.26*/ {_display_(Seq[Any](format.raw/*22.28*/("""
+      """),format.raw/*23.53*/("""
+      """),format.raw/*24.7*/("""<div class="card" data-href=""""),_display_(/*24.37*/controllers/*24.48*/.tweet.routes.TweetController.show(tweet.id.getOrElse(0))),format.raw/*24.105*/("""">
+        <div class="card_content">
+          """),_display_(/*26.12*/tweet/*26.17*/.content),format.raw/*26.25*/("""
+        """),format.raw/*27.9*/("""</div>
+        <div class="card_footer">
+          <div class="card_footer_item">
+            <a href=""""),_display_(/*30.23*/controllers/*30.34*/.tweet.routes.TweetController.edit(tweet.id.getOrElse(0))),format.raw/*30.91*/("""">
+              <i class="far fa-edit"></i>
+            </a>
+          </div>
+          <div class="card_footer_item">
+            """),_display_(/*35.14*/helper/*35.20*/.form(action = controllers.tweet.routes.TweetController.delete())/*35.85*/ {_display_(Seq[Any](format.raw/*35.87*/("""
+              """),_display_(/*36.16*/helper/*36.22*/.CSRF.formField),format.raw/*36.37*/("""
+              """),format.raw/*37.15*/("""<input type="hidden" value=""""),_display_(/*37.44*/tweet/*37.49*/.id),format.raw/*37.52*/("""" name="id">
+              <i class="far fa-trash-alt delete"></i>
+            """)))}),format.raw/*39.14*/("""
+          """),format.raw/*40.11*/("""</div>
+        </div>
+      </div>
+    """)))}),format.raw/*43.6*/("""
+""")))}),format.raw/*44.2*/("""
 """))
       }
     }
@@ -65,11 +86,11 @@ Seq[Any](format.raw/*4.1*/("""
 
               /*
                   -- GENERATED --
-                  DATE: 2020-04-26T12:43:12.808030
+                  DATE: 2020-04-26T12:54:13.377185
                   SOURCE: /Users/takapi327/projects/play-handson/app/views/tweet/list.scala.html
-                  HASH: 216936bb1440a094e1c991c6c91192ed0d485c1f
-                  MATRIX: 438->1|796->23|985->119|1012->121|1034->135|1073->137|1102->140|1155->168|1190->188|1228->189|1261->197|1275->203|1348->268|1387->270|1424->280|1439->286|1475->301|1511->310|1567->339|1581->344|1605->347|1678->393|1698->404|1776->461|1819->477|1833->482|1862->490|1901->501|1978->551|1998->562|2076->619|2249->762|2285->768|2315->771|2352->778
-                  LINES: 17->1|22->3|27->4|28->5|28->5|28->5|29->6|31->8|31->8|31->8|32->9|32->9|32->9|32->9|33->10|33->10|33->10|34->11|34->11|34->11|34->11|36->13|36->13|36->13|37->14|37->14|37->14|38->15|41->18|41->18|41->18|48->25|49->26|50->27|51->28
+                  HASH: cdd26a3eb9d491c6d6c3c1b05d481e66d51fdc44
+                  MATRIX: 438->1|796->22|969->143|979->146|1058->150|1087->153|1158->198|1172->204|1233->245|1260->274|1274->280|1355->284|1385->287|1426->301|1441->307|1502->347|1576->118|1604->141|1631->249|1660->272|1688->383|1718->411|1746->413|1815->474|1854->476|1885->506|1915->509|1962->530|1998->550|2038->552|2073->605|2107->612|2164->642|2184->653|2263->710|2339->759|2353->764|2382->772|2418->781|2549->885|2569->896|2647->953|2807->1086|2822->1092|2896->1157|2936->1159|2979->1175|2994->1181|3030->1196|3073->1211|3129->1240|3143->1245|3167->1248|3278->1328|3317->1339|3387->1379|3419->1381
+                  LINES: 17->1|22->2|26->5|26->5|28->5|29->6|29->6|29->6|29->6|30->10|30->10|32->10|33->11|33->11|33->11|33->11|35->3|36->4|37->7|39->9|40->12|42->14|43->15|47->19|47->19|48->20|49->21|50->22|50->22|50->22|51->23|52->24|52->24|52->24|52->24|54->26|54->26|54->26|55->27|58->30|58->30|58->30|63->35|63->35|63->35|63->35|64->36|64->36|64->36|65->37|65->37|65->37|65->37|67->39|68->40|71->43|72->44
                   -- GENERATED --
               */
           
