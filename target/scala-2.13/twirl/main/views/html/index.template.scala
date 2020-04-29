@@ -43,7 +43,7 @@ Seq[Any](format.raw/*2.1*/("""
 
               /*
                   -- GENERATED --
-                  DATE: 2020-04-23T23:36:31.664701
+                  DATE: 2020-04-29T13:23:45.604434
                   SOURCE: /Users/takapi327/projects/play-handson/app/views/index.scala.html
                   HASH: f7d71d8a9f655317469a39627564796bcf2a545b
                   MATRIX: 722->1|818->4|845->6|876->29|915->31|944->34|1000->61

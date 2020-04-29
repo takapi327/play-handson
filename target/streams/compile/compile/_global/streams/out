@@ -22,4 +22,3 @@
 [0m[[0m[33mwarn[0m] [0m[0m/Users/takapi327/projects/play-handson/app/views/tweet/store.scala.html:10:23: symbol literal is deprecated; use Symbol("_showConstraints") instead[0m
 [0m[[0m[33mwarn[0m] [0m[0m    'label -> "ツイート", '_showConstraints -> false[0m
 [0m[[0m[33mwarn[0m] [0m[0m                      ^[0m
-[0m[[0m[33mwarn[0m] [0m[0m8 warnings found[0m
